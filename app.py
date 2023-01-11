@@ -14,10 +14,7 @@ def home():
     img = get_current_crossing_image()
     img = transform_to_1D(img)
     model = load_model()
-    return str(model)
     prediction = (str(model.predict([img])))
-    print("Completed 3")
-
     return prediction
 
 def get_current_crossing_image():
@@ -26,6 +23,7 @@ def get_current_crossing_image():
     return Image.open(image_bytes)
 
 def transform_to_1D(img: Image):
+    img = img.convert("L")
     return np.asarray(img).ravel()
 
 def load_model():
