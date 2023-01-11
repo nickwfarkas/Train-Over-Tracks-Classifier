@@ -13,9 +13,8 @@ app = Flask(__name__)
 def home():
     img = get_current_crossing_image()
     img = transform_to_1D(img)
-    print("Completed 1")
     model = load_model()
-    print("Completed 2")
+    return ("Completed 2")
     prediction = (str(model.predict([img])))
     print("Completed 3")
 
