@@ -14,7 +14,7 @@ def home():
 #     img = transform_to_1D(img)
      model = load_model()
 #     prediction = (str(model.predict([img])))
-     return "Worked"
+     return model
 
 def get_current_crossing_image():
     image_request = requests.get("http://rrcrossings.woodhavenmi.org/allen.jpg?rnd=")
@@ -24,6 +24,10 @@ def get_current_crossing_image():
 # def transform_to_1D(img: Image):
 #     return np.asarray(img).ravel()
 
-def load_model() -> Pipeline:
+def load_model():
     with open("./src/model/tot_model", 'rb') as pickle_file:
-        return pickle.load(pickle_file)
+        return pickle_file.name
+
+# def load_model():
+#     with open("./src/model/tot_model", 'rb') as pickle_file:
+#         return pickle.load(pickle_file)
