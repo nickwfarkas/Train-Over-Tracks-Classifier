@@ -10,17 +10,16 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "hello"
-#     img = get_current_crossing_image()
+     img = get_current_crossing_image()
 #     img = transform_to_1D(img)
 #     model = load_model()
 #     prediction = (str(model.predict([img])))
-#     return prediction
+     return "Worked"
 
-# def get_current_crossing_image():
-#     image_request = requests.get("http://rrcrossings.woodhavenmi.org/allen.jpg?rnd=")
-#     image_bytes = BytesIO(image_request.content)
-#     return Image.open(image_bytes)
+def get_current_crossing_image():
+    image_request = requests.get("http://rrcrossings.woodhavenmi.org/allen.jpg?rnd=")
+    image_bytes = BytesIO(image_request.content)
+    return Image.open(image_bytes)
 
 # def transform_to_1D(img: Image):
 #     return np.asarray(img).ravel()
