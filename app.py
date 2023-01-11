@@ -26,7 +26,7 @@ def get_current_crossing_image():
 
 def load_model():
     with open("./src/model/tot_model", 'rb') as pickle_file:
-        return pickle_file.name
+        return pickle.load(pickle_file)
 
 # def load_model():
 #     with open("./src/model/tot_model", 'rb') as pickle_file:
