@@ -29,11 +29,8 @@ def transform_to_1D(img: Image):
     return np.asarray(img).ravel()
 
 def load_model():
-    try:
-        with open("./src/model/model.joblib", 'rb') as model_file:
-            return load(model_file)
-    except Exception as ex:
-        return ex
+    with open("./src/model/model.joblib", 'rb') as model_file:
+        return load(model_file)
 
 # def load_model():
 #     with open("./src/model/tot_model", 'rb') as pickle_file:
