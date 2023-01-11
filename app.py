@@ -12,7 +12,7 @@ app = Flask(__name__)
 def home():
      img = get_current_crossing_image()
 #     img = transform_to_1D(img)
-#     model = load_model()
+     model = load_model()
 #     prediction = (str(model.predict([img])))
      return "Worked"
 
@@ -24,6 +24,6 @@ def get_current_crossing_image():
 # def transform_to_1D(img: Image):
 #     return np.asarray(img).ravel()
 
-# def load_model() -> Pipeline:
-#     with open("./src/model/tot_model", 'rb') as pickle_file:
-#         return pickle.load(pickle_file)
+def load_model() -> Pipeline:
+    with open("./src/model/tot_model", 'rb') as pickle_file:
+        return pickle.load(pickle_file)
