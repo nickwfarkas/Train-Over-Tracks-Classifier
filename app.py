@@ -15,7 +15,7 @@ def home():
     # img = transform_to_1D(img)
     # model = load_model()
     # prediction = (str(model.predict([img])))
-    f = open("hello.txt", "r")
+    f = open("./src/model/hello.txt", "r")
     return f.read()
 
 def get_current_crossing_image():
