@@ -6,6 +6,7 @@ from io import BytesIO
 import numpy as np
 from sklearn.pipeline import Pipeline
 from joblib import dump, load
+from sklearn.decomposition import PCA
 
 app = Flask(__name__)
 
@@ -25,6 +26,13 @@ def get_current_crossing_image():
 def transform_to_1D(img: Image):
     img = img.convert("L")
     return np.asarray(img).ravel()
+
+# def reduce_image(img: Image):
+#     img_arr = transform_to_1D(img)
+#     # with open("./src/model/transform.joblib", 'rb') as pca_file:
+#     #     pca = load(pca_file)
+#     pca = PCA(n_components=60)
+#     return pca.fit_transform(img_arr)
 
 def load_model():
     with open("./src/model/model.joblib", 'rb') as model_file:
