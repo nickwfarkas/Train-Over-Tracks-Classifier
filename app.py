@@ -11,12 +11,15 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    # img = get_current_crossing_image()
-    # img = transform_to_1D(img)
-    # model = load_model()
-    # prediction = (str(model.predict([img])))
-    f = open("./src/model/hello.txt", "r")
-    return f.read()
+    img = get_current_crossing_image()
+    img = transform_to_1D(img)
+    print("Completed 1")
+    model = load_model()
+    print("Completed 2")
+    prediction = (str(model.predict([img])))
+    print("Completed 3")
+
+    return prediction
 
 def get_current_crossing_image():
     image_request = requests.get("http://rrcrossings.woodhavenmi.org/allen.jpg?rnd=")
