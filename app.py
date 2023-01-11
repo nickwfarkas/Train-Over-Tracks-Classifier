@@ -14,7 +14,7 @@ def home():
     img = get_current_crossing_image()
     img = transform_to_1D(img)
     model = load_model()
-    return ("Completed 2")
+    return str(model)
     prediction = (str(model.predict([img])))
     print("Completed 3")
 
@@ -29,8 +29,11 @@ def transform_to_1D(img: Image):
     return np.asarray(img).ravel()
 
 def load_model():
-    with open("./src/model/model.joblib", 'rb') as model_file:
-        return load(model_file)
+    try:
+        with open("./src/model/model.joblib", 'rb') as model_file:
+            return load(model_file)
+    except Exception as ex:
+        return ex
 
 # def load_model():
 #     with open("./src/model/tot_model", 'rb') as pickle_file:
