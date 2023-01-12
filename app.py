@@ -15,6 +15,7 @@ def home():
     img = get_current_crossing_image()
     img = transform_to_1D(img)
     model = load_model()
+    return "Model Loaded"
     prediction = (str(model.predict([img])))
     return prediction
 
