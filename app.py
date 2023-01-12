@@ -4,9 +4,7 @@ import requests
 from PIL import Image
 from io import BytesIO
 import numpy as np
-from sklearn.pipeline import Pipeline
 from joblib import dump, load
-from sklearn.decomposition import PCA
 
 app = Flask(__name__)
 
