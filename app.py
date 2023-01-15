@@ -33,7 +33,7 @@ def transform_to_1D(img: Image):
 #     return pca.fit_transform(img_arr)
 
 def load_model():
-    with open("./model/model.joblib", 'rb') as model_file:
+    with open("./src/model/model.joblib", 'rb') as model_file:
         return load(model_file)
 
 # def load_model():
