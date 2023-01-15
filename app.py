@@ -12,8 +12,8 @@ def home():
     img = get_current_crossing_image()
     img = transform_to_1D(img)
     model = load_model()
-    prediction = (str(model.predict([img])))
-    return prediction
+    # prediction = (str(model.predict([img])))
+    return model
 
 def get_current_crossing_image():
     image_request = requests.get("http://rrcrossings.woodhavenmi.org/allen.jpg?rnd=")
@@ -31,10 +31,14 @@ def transform_to_1D(img: Image):
 #     pca = PCA(n_components=60)
 #     return pca.fit_transform(img_arr)
 
-def load_model():
-    with open("./model/model.joblib", 'rb') as model_file:
-        return load(model_file)
+# def load_model():
+#     with open("./model/model.joblib", 'rb') as model_file:
+#         return load(model_file)
 
+def load_model():
+    with open("./src/model/test.txt", 'rb') as model_file:
+        return str(model_file.readlines())
+    
 # def load_model():
 #     with open("./src/model/tot_model", 'rb') as pickle_file:
 #         return pickle.load(pickle_file)
