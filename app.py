@@ -11,7 +11,11 @@ app = Flask(__name__)
 def home():
     img = get_current_crossing_image()
     img = transform_to_1D(img)
-    model = load_model()
+    try:
+        model = load(load_model())
+    except:
+        return "Failed to load"
+        
     # prediction = (str(model.predict([img])))
     return str(model)
 
