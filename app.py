@@ -3,7 +3,12 @@ import requests
 from PIL import Image
 from io import BytesIO
 import numpy as np
-from joblib import load
+import pickle
+from sklearn.pipeline import Pipeline
+from sklearn.decomposition import PCA
+from sklearn.neural_network import MLPClassifier
+from sklearn.preprocessing import StandardScaler
+
 
 app = Flask(__name__)
 
@@ -11,12 +16,10 @@ app = Flask(__name__)
 def home():
     img = get_current_crossing_image()
     img = transform_to_1D(img)
-    try:
-        model = load(load_model())
-    except:
-        return "Failed to load"
+
+    model = load_model()
         
-    # prediction = (str(model.predict([img])))
+    #prediction = (str(model.predict([img])))
     return str(model)
 
 def get_current_crossing_image():
@@ -40,8 +43,8 @@ def transform_to_1D(img: Image):
 #         return load(model_file)
 
 def load_model():
-    with open("./src/model/model.joblib", 'rb') as model_file:
-        return model_file
+    with open("./src/model/tot_model", 'rb') as model_file:
+        return pickle.load(model_file)
     
 # def load_model():
 #     with open("./src/model/tot_model", 'rb') as pickle_file:
