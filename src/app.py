@@ -1,20 +1,20 @@
-import pickle
 from flask import Flask
 import requests
 from PIL import Image
 from io import BytesIO
 import numpy as np
-from joblib import dump, load
+from joblib import load
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    img = get_current_crossing_image()
-    img = transform_to_1D(img)
-    model = load_model()
-    prediction = (str(model.predict([img])))
-    return prediction
+    # img = get_current_crossing_image()
+    # img = transform_to_1D(img)
+    # model = load_model()
+    # prediction = (str(model.predict([img])))
+    # return prediction
+    return "Works"
 
 def get_current_crossing_image():
     image_request = requests.get("http://rrcrossings.woodhavenmi.org/allen.jpg?rnd=")
@@ -33,7 +33,7 @@ def transform_to_1D(img: Image):
 #     return pca.fit_transform(img_arr)
 
 def load_model():
-    with open("./src/model/model.joblib", 'rb') as model_file:
+    with open("./model/model.joblib", 'rb') as model_file:
         return load(model_file)
 
 # def load_model():
