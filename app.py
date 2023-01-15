@@ -37,7 +37,7 @@ def transform_to_1D(img: Image):
 
 def load_model():
     with open("./src/model/model.joblib", 'rb') as model_file:
-        return str(model_file)
+        return model_file
     
 # def load_model():
 #     with open("./src/model/tot_model", 'rb') as pickle_file:
