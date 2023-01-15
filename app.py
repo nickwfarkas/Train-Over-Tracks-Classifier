@@ -13,7 +13,7 @@ def home():
     img = transform_to_1D(img)
     model = load_model()
     # prediction = (str(model.predict([img])))
-    return model
+    return str(model)
 
 def get_current_crossing_image():
     image_request = requests.get("http://rrcrossings.woodhavenmi.org/allen.jpg?rnd=")
