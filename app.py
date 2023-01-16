@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import jsonify
 import requests
 from PIL import Image
 from io import BytesIO
@@ -21,16 +22,8 @@ def home():
     try:
         prediction = (str(model.predict([img])[0]))
     except:
-        return {
-            "Status": 500,
-            "Message": "Failed to Predict",
-            "Prediction": []
-        }
-    return {
-        "Status": 200,
-        "Message": "Success",
-        "Prediction": prediction
-    }
+        return "500"
+    return prediction
 
 def get_current_crossing_image():
     image_request = requests.get("http://rrcrossings.woodhavenmi.org/allen.jpg?rnd=")
