@@ -1,1 +1,1 @@
-model.joblib filter=lfs diff=lfs merge=lfs -text
+tot_model filter=lfs diff=lfs merge=lfs -text
