@@ -21,16 +21,16 @@ def home():
     try:
         prediction = (str(model.predict([img])[0]))
     except:
-        return str({
+        return {
             "Status": 500,
             "Message": "Failed to Predict",
             "Prediction": []
-        })
-    return str({
+        }
+    return {
         "Status": 200,
         "Message": "Success",
         "Prediction": prediction
-    })
+    }
 
 def get_current_crossing_image():
     image_request = requests.get("http://rrcrossings.woodhavenmi.org/allen.jpg?rnd=")
