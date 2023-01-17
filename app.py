@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import jsonify
+from flask_json import FlaskJSON, json_response, JsonError
 import requests
 from PIL import Image
 from io import BytesIO
@@ -10,8 +10,8 @@ from sklearn.decomposition import PCA
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import StandardScaler
 
-
 app = Flask(__name__)
+FlaskJSON(app)
 
 @app.route("/")
 def home():
@@ -22,8 +22,8 @@ def home():
     try:
         prediction = (str(model.predict([img])[0]))
     except:
-        return "500"
-    return prediction
+        raise JsonError(description='Failed to Predict')
+    return json_response(prediction=prediction)
 
 def get_current_crossing_image():
     image_request = requests.get("http://rrcrossings.woodhavenmi.org/allen.jpg?rnd=")
